@@ -1,0 +1,146 @@
+﻿<Window x:Class="LiftLogicPro.Views.Main.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        Title="ليفت لوجيك برو"
+        Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        FlowDirection="RightToLeft">
+
+    <Window.DataContext>
+        <vm:MainViewModel xmlns:vm="clr-namespace:LiftLogicPro.ViewModels.Main"/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="381*"/>
+            <ColumnDefinition Width="19*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- شريط العنوان -->
+        <Border Grid.Row="0" 
+                Background="#FF0078D7"
+                Height="50" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- زر القائمة -->
+                <dx:SimpleButton Grid.Column="0"
+                                 Content="☰"
+                                 Width="50"
+                                 Height="40"
+                                 Margin="5"
+                                 Command="{Binding ToggleNavCommand}"/>
+
+                <!-- عنوان -->
+                <TextBlock Grid.Column="1" 
+                           Text="ليفت لوجيك برو"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Foreground="White"
+                           Margin="10,0"/>
+
+                <!-- معلومات المستخدم والوقت -->
+                <StackPanel Grid.Column="2" 
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            Margin="10,0">
+
+                    <TextBlock Text="{Binding CurrentUserName}" 
+                               FontSize="14"
+                               Foreground="White"
+                               Margin="10,0"/>
+
+                    <TextBlock Text="|" 
+                               Foreground="White"
+                               Margin="5,0"/>
+
+                    <TextBlock Text="{Binding CurrentDateTime}" 
+                               FontSize="14"
+                               Foreground="White"
+                               Margin="10,0"/>
+
+                    <dx:SimpleButton Content="خروج"
+                                     Width="60"
+                                     Height="30"
+                                     Margin="10,0"
+                                     Command="{Binding LogoutCommand}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- المحتوى الرئيسي -->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding IsNavExpanded, Converter={StaticResource BoolToWidthConverter}}"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- القائمة الجانبية -->
+            <Border Grid.Column="0" 
+                    Background="#FFF0F0F0"
+                    BorderBrush="#FFCCCCCC"
+                    BorderThickness="0,0,1,0">
+                <StackPanel Margin="5">
+
+                    <!-- الرئيسية -->
+                    <dx:SimpleButton Content="🏠 الرئيسية"
+                                     Height="40"
+                                     Margin="0,2"
+                                     HorizontalContentAlignment="Right"
+                                     Command="{Binding NavigateHomeCommand}"/>
+
+                    <!-- الصيانة -->
+                    <dx:SimpleButton Content="🔧 الصيانة"
+                                     Height="40"
+                                     Margin="0,2"
+                                     HorizontalContentAlignment="Right"
+                                     Command="{Binding NavigateMaintenanceCommand}"/>
+
+                    <!-- المخازن -->
+                    <dx:SimpleButton Content="📦 المخازن والفواتير"
+                                     Height="40"
+                                     Margin="0,2"
+                                     HorizontalContentAlignment="Right"
+                                     Command="{Binding NavigateInventoryCommand}"/>
+
+                    <!-- المبيعات -->
+                    <dx:SimpleButton Content="🛒 المبيعات"
+                                     Height="40"
+                                     Margin="0,2"
+                                     HorizontalContentAlignment="Right"
+                                     Command="{Binding NavigateSalesCommand}"/>
+
+                    <!-- الحسابات -->
+                    <dx:SimpleButton Content="📊 الحسابات"
+                                     Height="40"
+                                     Margin="0,2"
+                                     HorizontalContentAlignment="Right"
+                                     Command="{Binding NavigateAccountingCommand}"/>
+
+                    <!-- الإعدادات -->
+                    <dx:SimpleButton Content="⚙️ الإعدادات"
+                                     Height="40"
+                                     Margin="0,2"
+                                     HorizontalContentAlignment="Right"
+                                     Command="{Binding NavigateSettingsCommand}"/>
+
+                </StackPanel>
+            </Border>
+
+            <!-- منطقة المحتوى -->
+            <ContentControl Grid.Column="1" 
+                            Content="{Binding CurrentView}"/>
+        </Grid>
+    </Grid>
+</Window>

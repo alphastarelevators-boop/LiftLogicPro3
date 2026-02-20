@@ -1,0 +1,10 @@
+﻿<Application x:Class="LiftLogicPro.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="Views/Connection/ConnectionView.xaml">
+
+    <Application.Resources>
+        <local:BoolToWidthConverter x:Key="BoolToWidthConverter" 
+                                    xmlns:local="clr-namespace:LiftLogicPro.Infrastructure.Helpers"/>
+    </Application.Resources>
+</Application>

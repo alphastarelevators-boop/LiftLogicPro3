@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IncludePackageReferencesDuringMarkupCompilation>true</IncludePackageReferencesDuringMarkupCompilation>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+    <PackageReference Include="DevExpress.Wpf.Core" Version="25.1.3" />
+    <PackageReference Include="DevExpress.Wpf.Grid" Version="25.1.3" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Infrastructure\Database\" />
+    <Folder Include="Infrastructure\Security\" />
+    <Folder Include="Models\Entities\" />
+    <Folder Include="Models\Enums\" />
+    <Folder Include="Resources\Themes\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Services\Implementations\" />
+    <Folder Include="ViewModels\Maintenance\" />
+    <Folder Include="ViewModels\Inventory\" />
+    <Folder Include="ViewModels\Accounting\" />
+    <Folder Include="ViewModels\Attachments\" />
+    <Folder Include="ViewModels\Sales\" />
+    <Folder Include="ViewModels\Settings\" />
+    <Folder Include="Views\Maintenance\" />
+    <Folder Include="Views\Inventory\" />
+    <Folder Include="Views\Accounting\" />
+    <Folder Include="Views\Attachments\" />
+    <Folder Include="Views\Common\" />
+    <Folder Include="Views\Sales\" />
+    <Folder Include="Views\Settings\" />
+  </ItemGroup>
+
+</Project>
